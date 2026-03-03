@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import {VitePWA} from "vite-plugin-pwa";
 
 // https://vite.dev/config/
@@ -9,9 +9,9 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "Todo PWA",
+        name: "Todo App",
         short_name: "Todo",
-        description: "Una aplicación simple de tareas",
+        description: "Una aplicacin de tareas simple",
         start_url: "./",
         display: "standalone",
         background_color: "#ffffff",
@@ -23,20 +23,22 @@ export default defineConfig({
             type: 'image/png'
         },
         {
-            src: '/icons/icon512x512.png',
+             src: '/icons/icon512x512.png',
             sizes: '512x512',
             type: 'image/png'
         }
-      ],
-      screenshots: [
-        {
-          src: '/screenshots/Captura1.png',
-          sizes: '1861x946',
-          type: 'image/png'
-        }
-      ],
+        ], 
+        screenshots: [
+          {
+            src:'/screenshots/captura21.png',
+            sizes: '1902x990',
+            type: 'image/png',
+          }
+        ],
       },
-      devOptions : { enabled: true},
-})
-  ]
+      devOptions: {
+        enabled: false
+      },
+    }),
+  ],
 });

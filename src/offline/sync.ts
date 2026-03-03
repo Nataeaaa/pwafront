@@ -14,19 +14,23 @@ export async function syncNow() {
   for (const op of ops) {
     if (op.op === "create") {
       toSync.push({
-        clienteId: op.clienteId,
-        title: op.data.title,
+        clienteId:   op.clienteId,
+        title:       op.data.title,
         description: op.data.description ?? "",
-        status: op.data.status ?? "Pendiente",
+        status:      op.data.status      ?? "Pendiente",
+        priority:    op.data.priority    ?? "medio",   // ← AGREGADO
+        dueDate:     op.data.dueDate     ?? null,      // ← AGREGADO
       });
     } else if (op.op === "update") {
       const cid = op.clienteId;
       if (cid) {
         toSync.push({
-          clienteId: cid,
-          title: op.data.title,
+          clienteId:   cid,
+          title:       op.data.title,
           description: op.data.description,
-          status: op.data.status,
+          status:      op.data.status,
+          priority:    op.data.priority,               // ← AGREGADO
+          dueDate:     op.data.dueDate,                // ← AGREGADO
         });
       } else if (op.serverId) {
         try { await api.put(`/tasks/${op.serverId}`, op.data); } catch {}
